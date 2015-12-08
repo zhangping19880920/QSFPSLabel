@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "QSFPSLabel"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "iOS显示帧数"
 
   s.description  = <<-DESC
@@ -39,8 +39,8 @@ Pod::Spec.new do |s|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  s.license      = "MIT"
-  # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
+  # s.license      = "MIT"
+  s.license      = { :type => "MIT", :file => "LICENSE" }
 
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -79,7 +79,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/zhangping19880920/QSFPSLabel.git", :tag => "1.0.0" }
+  s.source       = { :git => "https://github.com/zhangping19880920/QSFPSLabel.git", :tag => "1.0.1" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

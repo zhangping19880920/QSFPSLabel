@@ -28,10 +28,6 @@ public extension UIView {
                 // 添加到当前view里面
                 self.addSubview(fps)
                 
-                fps.translatesAutoresizingMaskIntoConstraints = false
-                self.addConstraint(NSLayoutConstraint(item: fps, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Left, multiplier: 1, constant: 10))
-                self.addConstraint(NSLayoutConstraint(item: fps, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0))
-                
                 // 调用set 方法来将 fps 关联到 fpsViewKey 上面
                 self.fpsView = fps
                 
@@ -45,13 +41,21 @@ public extension UIView {
             objc_setAssociatedObject(self, &fpsViewKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
+    
+    func show() {
+        show(CGPointZero)
+    }
+    
+    func show(origin: CGPoint) {
+        fpsView?.frame.origin = origin
+    }
 }
 
 // 自定义 QSFPSLabel,显示view的帧率
 public class QSFPSLabel: UILabel {
     
     // fpsLabel的大小
-    private var FPSSize = CGSize(width: 55, height: 20)
+    private var FPSSize = CGSize(width: 65, height: 20)
     
     // 帧数的 Font
     private var textFont: UIFont? = UIFont.systemFontOfSize(14)
@@ -150,8 +154,10 @@ public class QSFPSLabel: UILabel {
         // 计算 帧数 颜色
         let color = UIColor(hue: CGFloat(0.27 * (progress - 0.2)), saturation: 1, brightness: 0.9, alpha: 1)
         
+        let fpsString = String(format: "%.1f", arguments: [fps])
+        
         // 设置内容
-        let content = "\(Int(fps)) \(FPSText)"
+        let content = "\(fpsString) \(FPSText)"
         
         // 创建属性文本
         let attr = NSMutableAttributedString(string: "\(content)")
